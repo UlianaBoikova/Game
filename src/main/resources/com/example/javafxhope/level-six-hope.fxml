@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+
+<Pane fx:id="mainPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" prefHeight="401.0" prefWidth="600.0" style="-fx-background-color: #245678;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxhope.LevelSixHopeController">
+    <children>
+        <Pane fx:id="gamePane" layoutY="1.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff6d1; -fx-background-radius: 5;">
+            <children>
+                <Line fx:id="line1" endX="-99.0" endY="-197.0" layoutX="147.5" layoutY="300.5" startX="-99.0" startY="6.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line14" endX="-208.0" endY="-131.0" layoutX="339.5" layoutY="275.5" startX="-208.0" startY="-277.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line16" endX="-100.0" endY="-25.0" layoutX="189.5" layoutY="77.5" startX="-100.0" startY="121.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line3" endX="-61.0" endY="-130.0" layoutX="150.5" layoutY="182.5" startX="-103.0" startY="-130.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line4" endX="-221.0" endY="-289.0" layoutX="497.5" layoutY="549.5" startX="-91.0" startY="-288.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line7" endX="-72.0" endY="-206.0" layoutX="164.5" layoutY="488.5" startX="-33.0" startY="-206.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line18" endX="-100.0" endY="-207.0" layoutX="326.5" layoutY="303.5" startX="-100.0" startY="54.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line5" endX="-165.0" endY="-239.0" layoutX="343.5" layoutY="285.5" startX="2.0" startY="-239.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line20" endX="-287.0" endY="-152.0" layoutX="513.5" layoutY="384.5" startX="-332.0" startY="-152.0" stroke="#68451f" strokeWidth="3.0" />
+                <ImageView fx:id="squirrelRunning" fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="329.0">
+                    <image>
+                        <Image url="@../../../../java/com/example/javafxhope/assets/copy.png" />
+                    </image>
+                </ImageView>
+                <Line fx:id="line10" endX="-100.0" endY="-305.0" layoutX="100.0" layoutY="303.0" startX="-100.0" startY="97.0" stroke="#245678" strokeWidth="3.0" />
+                <Line fx:id="line11" endX="-100.0" endY="-305.0" layoutX="700.0" layoutY="304.0" startX="-100.0" startY="102.5" stroke="#245678" strokeWidth="3.0" />
+                <Line fx:id="line12" endX="-171.0" endY="-305.0" layoutX="171.5" layoutY="305.5" startX="430.5" startY="-305.0" stroke="#245678" strokeWidth="3.0" />
+                <Line fx:id="line13" endX="-169.50001525878906" endY="-305.99993896484375" layoutX="171.0" layoutY="706.0" startX="429.0" startY="-305.9999694824219" stroke="#245678" strokeWidth="3.0" />
+                <Line fx:id="line19" endX="-100.0" endY="-55.0" layoutX="280.5" layoutY="361.5" startX="-100.0" startY="41.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line15" endX="-101.0" endY="-79.0" layoutX="280.5" layoutY="175.5" startX="-54.0" startY="-79.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line17" endX="-126.0" endY="-26.0" layoutX="259.5" layoutY="221.5" startX="-82.0" startY="-26.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line8" endX="-67.0" endY="-82.0" layoutX="159.5" layoutY="195.5" startX="-30.0" startY="-82.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line2" endX="-16.0" endY="-27.0" layoutX="147.5" layoutY="383.5" startX="-100.0" startY="-27.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line38" endX="-100.0" endY="-184.0" layoutX="647.5" layoutY="403.5" startX="-100.0" startY="-97.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line21" endX="-100.0" endY="-54.0" layoutX="375.5" layoutY="363.5" startX="-100.0" startY="37.0" stroke="#68451f" strokeWidth="3.0" />
+                <ImageView fx:id="portal" fitHeight="38.0" fitWidth="28.0" layoutX="350.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" style="-fx-fit-width: 100;">
+                    <image>
+                        <Image url="@../../../../java/com/example/javafxhope/assets/XDZT.gif" />
+                    </image>
+                </ImageView>
+                <Line fx:id="line9" endX="-71.0" endY="-82.0" layoutX="120.5" layoutY="280.5" startX="-32.0" startY="-82.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line23" endX="-100.0" endY="-281.0" layoutX="430.5" layoutY="544.5" startX="-100.0" startY="-194.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line29" endX="-283.0" endY="-110.0" layoutX="688.5" layoutY="459.5" startX="-283.0" startY="-151.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line27" endX="-114.0" endY="-152.0" layoutX="663.5" layoutY="504.5" startX="-212.0" startY="-152.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line24" endX="-345.0" endY="-138.0" layoutX="677.5" layoutY="488.5" startX="-272.0" startY="-138.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line28" endX="-130.0" endY="-152.0" layoutX="676.5" layoutY="412.5" startX="-220.0" startY="-152.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line25" endX="-300.0" endY="-216.0" layoutX="575.5" layoutY="218.5" startX="-300.0" startY="42.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line30" endX="-161.0" endY="-152.0" layoutX="568.5" layoutY="373.5" startX="-242.0" startY="-152.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line31" endX="-300.0" endY="-121.0" layoutX="707.5" layoutY="344.5" startX="-300.0" startY="-83.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line26" endX="-208.0" endY="-148.5" layoutX="602.5" layoutY="280.0" startX="-327.0" startY="-148.5" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line32" endX="-300.0" endY="-169.0" layoutX="695.5" layoutY="215.5" startX="-300.0" startY="-84.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line33" endX="-162.0" endY="-152.0" layoutX="709.5" layoutY="195.5" startX="-257.0" startY="-152.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line34" endX="-223.0" endY="-152.0" layoutX="768.5" layoutY="242.5" startX="-438.0" startY="-152.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line35" endX="-300.0" endY="-281.0" layoutX="793.5" layoutY="414.5" startX="-300.0" startY="-106.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line36" endX="-86.0" endY="-152.0" layoutX="578.5" layoutY="328.5" startX="-213.0" startY="-152.0" stroke="#68451f" strokeWidth="3.0" />
+                <Line fx:id="line37" endX="-146.0" endY="-204.0" layoutX="691.5" layoutY="295.5" startX="-146.0" startY="-140.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line39" endX="-100.0" endY="-63.0" layoutX="595.5" layoutY="417.5" startX="-100.0" startY="-17.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line6" endX="-99.0" endY="-197.0" layoutX="232.5" layoutY="393.5" startX="-99.0" startY="-36.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line22" endX="-100.0" endY="-57.0" layoutX="279.5" layoutY="153.5" startX="-100.0" startY="42.5" stroke="#68451f" strokeWidth="3.0" />
+            </children>
+        </Pane>
+        <ImageView fx:id="haunterRunning" fitHeight="30.0" fitWidth="30.0" layoutX="15.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../java/com/example/javafxhope/assets/haunter.png" />
+            </image>
+        </ImageView>
+    </children>
+</Pane>

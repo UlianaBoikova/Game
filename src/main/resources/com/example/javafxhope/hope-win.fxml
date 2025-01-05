@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
-</AnchorPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff6d1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxhope.HopeWinController">
+   <children>
+      <ImageView fx:id="winPicture" fitHeight="180.0" fitWidth="429.0" layoutX="120.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true" rotate="24.0">
+         <image>
+            <Image url="@../../../../java/com/example/javafxhope/assets/Win.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star1" fitHeight="118.0" fitWidth="133.0" layoutX="154.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../java/com/example/javafxhope/assets/star.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star2" fitHeight="128.0" fitWidth="132.0" layoutX="235.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" rotate="10.3">
+         <image>
+            <Image url="@../../../../java/com/example/javafxhope/assets/star.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star3" fitHeight="118.0" fitWidth="133.0" layoutX="322.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" rotate="31.6">
+         <image>
+            <Image url="@../../../../java/com/example/javafxhope/assets/star.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="startOverButton" layoutX="78.0" layoutY="318.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="164.0" style="-fx-background-color: #d4ff00;" text="Start Over" textFill="#245678">
+         <font>
+            <Font name="Avenir Next Condensed Heavy" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="menuButton" layoutX="367.0" layoutY="318.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="164.0" style="-fx-background-color: #d4ff00;" text="Menu" textFill="#245678">
+         <font>
+            <Font name="Avenir Next Condensed Heavy" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

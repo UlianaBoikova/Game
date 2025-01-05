@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
-</AnchorPane>
+<Pane fx:id="mainPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" prefHeight="401.0" prefWidth="600.0" style="-fx-background-color: #245678;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxhope.LevelOneHopeController">
+   <children>
+      <Pane fx:id="gamePane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff6d1; -fx-background-radius: 5;">
+         <children>
+            <Line fx:id="line1" endX="-100.0" endY="-313.0" layoutX="155.5" layoutY="400.5" startX="-100.0" startY="1.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line2" endX="-208.0" endY="2.0" layoutX="322.5" layoutY="322.5" startX="-208.0" startY="-323.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line3" endX="-100.0" endY="-140.0" layoutX="271.5" layoutY="227.5" startX="-100.0" startY="173.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line8" endX="-100.0" endY="-305.0" layoutX="571.5" layoutY="304.5" startX="-100.0" startY="23.0" stroke="#68451f" strokeWidth="3.0" />
+            <ImageView fx:id="squirrelRunning" fitHeight="40.0" fitWidth="40.0" layoutX="5.0" layoutY="330.0">
+               <image>
+                  <Image url="@../../../../java/com/example/javafxhope/assets/copy.png" />
+               </image>
+            </ImageView>
+            <Line fx:id="line10" endX="-100.0" endY="-305.0" layoutX="100.5" layoutY="303.5" startX="-100.0" startY="75.0" stroke="#245678" strokeWidth="3.0" />
+            <Line fx:id="line11" endX="-100.0" endY="-305.0" layoutX="700.5" layoutY="304.5" startX="-100.0" startY="102.0" stroke="#245678" strokeWidth="3.0" />
+            <Line fx:id="line12" endX="-171.0" endY="-305.0" layoutX="171.5" layoutY="305.5" startX="430.0" startY="-305.0" stroke="#245678" strokeWidth="3.0" />
+            <Line fx:id="line13" endX="-114.0" endY="-306.0" layoutX="171.5" layoutY="706.5" startX="430.0" startY="-306.0" stroke="#245678" strokeWidth="3.0" />
+            <ImageView fx:id="haunterRunning" fitHeight="40.0" fitWidth="40.0" layoutX="5.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../java/com/example/javafxhope/assets/haunter.png" />
+               </image>
+            </ImageView>
+            <Line fx:id="line5" endX="-100.0" endY="-276.0" layoutX="400.5" layoutY="361.5" startX="-100.0" startY="41.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line7" endX="-100.0" endY="-341.0" layoutX="514.5" layoutY="425.5" startX="-100.0" startY="-26.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line4" endX="-100.0" endY="-323.0" layoutX="335.5" layoutY="325.5" startX="-100.0" startY="1.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line6" endX="-99.0" endY="-77.0" layoutX="456.5" layoutY="78.5" startX="-99.0" startY="248.0" stroke="#68451f" strokeWidth="3.0" />
+            <Line fx:id="line9" endX="-100.0" endY="-319.0" layoutX="633.5" layoutY="401.0" startX="-100.0" stroke="#68451f" strokeWidth="3.0" />
+            <ImageView fx:id="portal" fitHeight="59.0" fitWidth="53.0" layoutX="536.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" style="-fx-fit-width: 100;">
+               <image>
+                  <Image url="@../../../../java/com/example/javafxhope/assets/XDZT.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</Pane>
