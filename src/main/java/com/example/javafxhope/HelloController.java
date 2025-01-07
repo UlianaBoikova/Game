@@ -1,26 +1,20 @@
 package com.example.javafxhope;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class HelloController {
 
     private static byte levelNumber;
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button level1Button;
@@ -49,11 +43,12 @@ public class HelloController {
     @FXML
     private Button level9Button;
 
-    @FXML
-    private Pane mainPane;
 
     @FXML
-    private Label startLabel;
+    private Label scoreStars;
+
+    @FXML
+    private ImageView starPicture;
 
     public void setLevelNumber(byte number) {
         levelNumber = number;
@@ -65,6 +60,9 @@ public class HelloController {
 
     @FXML
     void initialize() {
+        Image image = new Image("file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/star.png");
+        starPicture.setImage(image);
+        scoreStars.setText(String.valueOf(HopeWinController.getAllStars()));
         level1Button.setOnAction(event -> {
             setLevelNumber((byte) 1);
             level1Button.getScene().getWindow().hide();
@@ -79,7 +77,7 @@ public class HelloController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();;
+            stage.showAndWait();
         });
         level2Button.setOnAction(event -> {
             setLevelNumber((byte) 2);
@@ -95,7 +93,7 @@ public class HelloController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();;
+            stage.showAndWait();
         });
         level3Button.setOnAction(event -> {
             setLevelNumber((byte) 3);
@@ -111,7 +109,7 @@ public class HelloController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();;
+            stage.showAndWait();
         });
         level4Button.setOnAction(event -> {
             setLevelNumber((byte) 4);
@@ -127,7 +125,7 @@ public class HelloController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();;
+            stage.showAndWait();
         });
         level5Button.setOnAction(event -> {
             setLevelNumber((byte) 5);
@@ -143,7 +141,7 @@ public class HelloController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();;
+            stage.showAndWait();
         });
         level6Button.setOnAction(event -> {
             setLevelNumber((byte) 6);
@@ -159,7 +157,7 @@ public class HelloController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();;
+            stage.showAndWait();
         });
         level7Button.setOnAction(event -> {
             setLevelNumber((byte) 7);
@@ -175,7 +173,7 @@ public class HelloController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();;
+            stage.showAndWait();
         });
         level8Button.setOnAction(event -> {
             setLevelNumber((byte) 8);
@@ -191,7 +189,7 @@ public class HelloController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();;
+            stage.showAndWait();
         });
         level9Button.setOnAction(event -> {
             setLevelNumber((byte) 9);
@@ -207,7 +205,7 @@ public class HelloController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();;
+            stage.showAndWait();
         });
     }
 

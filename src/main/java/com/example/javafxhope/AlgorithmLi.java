@@ -43,7 +43,7 @@ public class AlgorithmLi {
 
             // Проверка, достигли ли цели
             if (x == goal[0] && y == goal[1]) {
-                return reconstructPath(parent, start, goal);  // Восстанавливаем путь
+                return reconstructPath(parent, goal);  // Восстанавливаем путь
             }
 
             // Обработка соседей
@@ -56,6 +56,7 @@ public class AlgorithmLi {
 
                 boolean ifStepPossible = true;
 
+                /*
                 if (nx + width - 1 < rows && nx >= 0 && ny >= 0 && ny + height - 1 < cols) {
                     for (int k = ny + height - 1; k >= ny; k -= 3) {
 
@@ -86,6 +87,8 @@ public class AlgorithmLi {
 
 
 
+                 */
+
                 // Проверка границ и стен
                 if (nx >= 0 && nx < rows && ny >= 0 && ny < cols && ny + height - 1 < cols && nx + width - 1 < rows &&
                         maze[nx][ny] == 0 && maze[nx][ny + height - 1] != 1 && maze[nx + width - 1][ny] != 1 &&
@@ -103,9 +106,8 @@ public class AlgorithmLi {
     }
 
     // Восстановление пути от цели к началу
-    public static List<int[]> reconstructPath(int[][] parent, int[] start, int[] goal) {
+    public static List<int[]> reconstructPath(int[][] parent, int[] goal) {
         List<int[]> path = new ArrayList<>();
-        int rows = parent.length;
         int cols = parent[0].length;
 
         int current = goal[0] * cols + goal[1];
@@ -123,10 +125,8 @@ public class AlgorithmLi {
         return path;
     }
 
-    public List<int[]> find(int maze[][], int[] start, int[] goal, int width, int height) {
-        List<int[]> path = waveAlgorithm(maze, start, goal, width, height);
-
-        return path;
+    public List<int[]> find(int[][] maze, int[] start, int[] goal, int width, int height) {
+        return waveAlgorithm(maze, start, goal, width, height);
     }
 }
 

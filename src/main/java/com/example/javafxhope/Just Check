@@ -1,3 +1,21 @@
+
+            // Перемещение круга
+            int newLocationX = 0;
+            int newLocationY = 0;
+
+            // Логика движения по Y
+            if (squirrelRunning.getLayoutY() > haunterRunning.getLayoutY() && haunterRunning.getLayoutY() < 400) {
+                newLocationY = 1; // Двигаться вниз
+            } else if (squirrelRunning.getLayoutY() < haunterRunning.getLayoutY() && haunterRunning.getLayoutY() > 0) {
+                newLocationY = -1; // Двигаться вверх
+            }
+
+            // Логика движения по X
+            if (squirrelRunning.getLayoutX() > haunterRunning.getLayoutX() && haunterRunning.getLayoutX() < 600) {
+                newLocationX = 1; // Двигаться вправо
+            } else if (squirrelRunning.getLayoutX() < haunterRunning.getLayoutX() && haunterRunning.getLayoutX() > 0) {
+                newLocationX = -1; // Двигаться влево
+            }
 <?xml version="1.0" encoding="UTF-8"?>void initialize() {
                                               Platform.runLater(() -> mainPane.requestFocus());
                                               setObstaclesTable();

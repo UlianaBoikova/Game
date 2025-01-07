@@ -1,12 +1,7 @@
 package com.example.javafxhope;
 
-import java.awt.geom.Point2D;
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -19,24 +14,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import static com.example.javafxhope.HopeWinController.time;
+import static javafx.scene.input.KeyCode.*;
+import static javafx.scene.input.KeyCode.RIGHT;
 
 public class LevelNineHopeController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Pane gamePane;
-
-
 
 
     @FXML
@@ -180,19 +165,14 @@ public class LevelNineHopeController {
 
     @FXML
     private ImageView haunterRunning;
-    private final ArrayList<Step> ghostSteps = new ArrayList<>();
-
     private final static int SIZE = 25;
 
 
 
     @FXML
     private ImageView squirrelRunning;
-    private final ArrayList<Step> squirrelSteps = new ArrayList<>();
-    private final ArrayList<Step> haunterSteps = new ArrayList<>();
-    private final ArrayList<Step> haunterWalking = new ArrayList<>();
 
-    private int[][] table = new int[400][600];
+    private final int[][] table = new int[400][600];
     public void upgradeTime(double interval) {
         time += interval;
     }
@@ -201,25 +181,22 @@ public class LevelNineHopeController {
     @FXML
     void initialize() {
         Platform.runLater(() -> mainPane.requestFocus());
-        Image image = new Image("file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/copy.png");
+        Image image = new Image(
+                "file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/copy.png");
         squirrelRunning.setImage(image);
 
-        Image image1 = new Image("file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/haunter.png");
+        Image image1 = new Image(
+                "file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/haunter.png");
         haunterRunning.setImage(image1);
 
-        Image image2 = new Image("file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/XDZT.gif");
+        Image image2 = new Image(
+                "file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/XDZT.gif");
         portal.setImage(image2);
 
         fillTable();
 
         Timeline timeline = new Timeline();
-        timeline.setCycleCount(Timeline.INDEFINITE); // Анимация будет бесконечной
-        AtomicInteger i = new AtomicInteger();
-        AtomicInteger x = new AtomicInteger();
-        x.set(100);
-        AtomicInteger y = new AtomicInteger();
-        AtomicBoolean hope = new AtomicBoolean();
-        hope.set(true);
+        timeline.setCycleCount(Timeline.INDEFINITE);
         time = 0;
 
 
@@ -262,23 +239,6 @@ public class LevelNineHopeController {
                 stage.show();
             }
 
-            // Перемещение круга
-            int newLocationX = 0;
-            int newLocationY = 0;
-
-            // Логика движения по Y
-            if (squirrelRunning.getLayoutY() > haunterRunning.getLayoutY() && haunterRunning.getLayoutY() < 400) {
-                newLocationY = 1; // Двигаться вниз
-            } else if (squirrelRunning.getLayoutY() < haunterRunning.getLayoutY() && haunterRunning.getLayoutY() > 0) {
-                newLocationY = -1; // Двигаться вверх
-            }
-
-            // Логика движения по X
-            if (squirrelRunning.getLayoutX() > haunterRunning.getLayoutX() && haunterRunning.getLayoutX() < 600) {
-                newLocationX = 1; // Двигаться вправо
-            } else if (squirrelRunning.getLayoutX() < haunterRunning.getLayoutX() && haunterRunning.getLayoutX() > 0) {
-                newLocationX = -1; // Двигаться влево
-            }
 
             if (haunterRunning.getLayoutY() + SIZE < 400) {
                 System.out.println("I am working STILL!");
@@ -288,7 +248,8 @@ public class LevelNineHopeController {
                 cycle:
                 for (int k = (int) squirrelRunning.getLayoutY(); k < squirrelRunning.getLayoutY() + SIZE; k++) {
                     for (int l = (int) squirrelRunning.getLayoutX(); l < squirrelRunning.getLayoutX() + SIZE; l++) {
-                        List<int[]> path1 = algorithm.find(table, new int[]{(int) haunterRunning.getLayoutY() , (int)haunterRunning.getLayoutX()}, new int[]{(int) k , (int) l}, SIZE, SIZE);
+                        List<int[]> path1 = algorithm.find(table, new int[]{(int) haunterRunning.getLayoutY(),
+                                (int)haunterRunning.getLayoutX()}, new int[]{k, l}, SIZE, SIZE);
                         if (path1 != null && path1.size() >= 2) {
                             moveX = path1.get(1)[1];
                             moveY = path1.get(1)[0];
@@ -305,8 +266,6 @@ public class LevelNineHopeController {
             else {
                 haunterRunning.setLayoutY(haunterRunning.getLayoutY() - 1);
             }
-
-            ghostSteps.add(new Step((int) haunterRunning.getLayoutX(), (int) haunterRunning.getLayoutY()));
 
 
         });
@@ -375,12 +334,6 @@ public class LevelNineHopeController {
     }
 
 
-
-
-    // Метод для проверки, лежит ли точка (px, py) на линии
-
-
-
     public void fillTable() {
         for (int i = 0; i < 400; i++) {
             for (int j = 0; j < 600; j++) {
@@ -443,18 +396,6 @@ public class LevelNineHopeController {
     }
 
 
-
-
-
-    private void setHaunterSteps(Step step) {
-        for (int i = 5; i >= 1; i--) {
-            haunterSteps.add(new Step(step.getX() / 5, step.getY() / 5));
-        }
-    }
-
-
-
-
     public boolean isLinesCrossed(ImageView circle, int step, boolean isY) {
         ImageView checkCircle;
         if (isY) {
@@ -480,159 +421,119 @@ public class LevelNineHopeController {
 
     public void handleKeyPress(KeyEvent keyEvent) {
         System.out.println("Key Pressed: " + keyEvent.getCode()); // Печатаем нажатую клавишу
-        switch (keyEvent.getCode()) {
-            case UP:
-                if (squirrelRunning.getScaleX() == 1) {
-                    squirrelRunning.setRotate(270);
-                } else {
-                    squirrelRunning.setRotate(90);
-                }
-                if (!isLinesCrossed(squirrelRunning, -10, true)) {
+        if (keyEvent.getCode() == UP) {
+            if (squirrelRunning.getScaleX() == 1) {
+                squirrelRunning.setRotate(270);
+            } else {
+                squirrelRunning.setRotate(90);
+            }
+            if (!isLinesCrossed(squirrelRunning, -10, true)) {
 
-                    Timeline timeline = new Timeline();
-                    timeline.setCycleCount(9);
+                Timeline timeline = new Timeline();
+                timeline.setCycleCount(9);
 
-                    KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event ->
-                            squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() - 1));
+                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event ->
+                        squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() - 1));
 
-                    timeline.getKeyFrames().add(keyFrame);
-                    timeline.play();
-                } else {
-                    for (int i = -9; i <= -1; i++) {
-                        if (!isLinesCrossed(squirrelRunning, i, true)) {
-                            Timeline timeline = new Timeline();
-                            timeline.setCycleCount(Math.abs(i + 1));
+                timeline.getKeyFrames().add(keyFrame);
+                timeline.play();
+            } else {
+                for (int i = -9; i <= -1; i++) {
+                    if (!isLinesCrossed(squirrelRunning, i, true)) {
+                        Timeline timeline = new Timeline();
+                        timeline.setCycleCount(Math.abs(i + 1));
 
-                            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event -> {
-                                squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() - 1);
-                            });
-                            timeline.getKeyFrames().add(keyFrame);
-                            timeline.play();
-                            squirrelSteps.add(new Step(0, i + 1));
-                            setHaunterSteps(new Step(0, i + 1));
-                            break;
-                        }
+                        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005),
+                                event -> squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() - 1));
+                        timeline.getKeyFrames().add(keyFrame);
+                        timeline.play();
+                        break;
                     }
                 }
-                break;
-            case DOWN:
-                if (squirrelRunning.getScaleX() == 1) {
-                    squirrelRunning.setRotate(90);
-                } else {
-                    squirrelRunning.setRotate(270);
-                }
-                if (!isLinesCrossed(squirrelRunning, 10, true)) {
-                    Timeline timeline = new Timeline();
-                    timeline.setCycleCount(9);
+            }
+        }
+        if (keyEvent.getCode() == DOWN) {
+            if (squirrelRunning.getScaleX() == 1) {
+                squirrelRunning.setRotate(90);
+            } else {
+                squirrelRunning.setRotate(270);
+            }
+            if (!isLinesCrossed(squirrelRunning, 10, true)) {
+                Timeline timeline = new Timeline();
+                timeline.setCycleCount(9);
 
-                    KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event -> {
-                        squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() + 1);
+                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005),
+                        event -> squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() + 1));
 
+                timeline.getKeyFrames().add(keyFrame);
+                timeline.play();
+            } else {
+                for (int i = 9; i >= 1; i--) {
+                    if (!isLinesCrossed(squirrelRunning, i, true)) {
+                        Timeline timeline = new Timeline();
+                        timeline.setCycleCount(i - 1);
 
-                    });
-
-                    timeline.getKeyFrames().add(keyFrame);
-                    timeline.play();
-
-                    squirrelSteps.add(new Step(0, 9));
-                    setHaunterSteps(new Step(0, 9));
-                } else {
-                    for (int i = 9; i >= 1; i--) {
-                        if (!isLinesCrossed(squirrelRunning, i, true)) {
-                            Timeline timeline = new Timeline();
-                            timeline.setCycleCount(i - 1);
-
-                            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event -> {
-                                squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() + 1);
-
-
-                            });
-                            timeline.getKeyFrames().add(keyFrame);
-                            timeline.play();
-
-                            squirrelSteps.add(new Step(0, i - 1));
-                            setHaunterSteps(new Step(0, i - 1));
-                            break;
-                        }
+                        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005),
+                                event -> squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() + 1));
+                        timeline.getKeyFrames().add(keyFrame);
+                        timeline.play();
+                        break;
                     }
                 }
-                break;
-            case LEFT:
-                squirrelRunning.setRotate(0);
-                squirrelRunning.setScaleX(-1);
-                if (!isLinesCrossed(squirrelRunning, -10, false)) {
-                    Timeline timeline = new Timeline();
-                    timeline.setCycleCount(Math.abs(9));
+            }
+        }
+        if (keyEvent.getCode() == LEFT) {
+            squirrelRunning.setRotate(0);
+            squirrelRunning.setScaleX(-1);
+            if (!isLinesCrossed(squirrelRunning, -10, false)) {
+                Timeline timeline = new Timeline();
+                timeline.setCycleCount(Math.abs(9));
 
-                    KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event -> {
-                        squirrelRunning.setLayoutX(squirrelRunning.getLayoutX() - 1);
+                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005),
+                        event -> squirrelRunning.setLayoutX(squirrelRunning.getLayoutX() - 1));
+                timeline.getKeyFrames().add(keyFrame);
+                timeline.play();
 
+            } else {
+                for (int i = -9; i <= -1; i++) {
+                    if (!isLinesCrossed(squirrelRunning, i, false)) {
+                        Timeline timeline = new Timeline();
+                        timeline.setCycleCount(Math.abs(i + 1));
 
-                    });
-                    timeline.getKeyFrames().add(keyFrame);
-                    timeline.play();
-
-
-                    squirrelSteps.add(new Step(-9, 0));
-                    setHaunterSteps(new Step(-9, 0));
-                } else {
-                    for (int i = -9; i <= -1; i++) {
-                        if (!isLinesCrossed(squirrelRunning, i, false)) {
-                            Timeline timeline = new Timeline();
-                            timeline.setCycleCount(Math.abs(i + 1));
-
-                            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event -> {
-                                squirrelRunning.setLayoutX(squirrelRunning.getLayoutX() - 1);
-
-
-                            });
-                            timeline.getKeyFrames().add(keyFrame);
-                            timeline.play();
-                            squirrelSteps.add(new Step(i + 1, 0));
-                            setHaunterSteps(new Step(i + 1, 0));
-                            break;
-                        }
+                        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005),
+                                event -> squirrelRunning.setLayoutX(squirrelRunning.getLayoutX() - 1));
+                        timeline.getKeyFrames().add(keyFrame);
+                        timeline.play();
+                        break;
                     }
                 }
-                break;
-            case RIGHT:
-                squirrelRunning.setScaleX(1);
-                squirrelRunning.setRotate(0);
-                if (!isLinesCrossed(squirrelRunning, 10, false)) {
-                    Timeline timeline = new Timeline();
-                    timeline.setCycleCount(Math.abs(9));
+            }
+        }
+        if (keyEvent.getCode() == RIGHT) {
+            squirrelRunning.setScaleX(1);
+            squirrelRunning.setRotate(0);
+            if (!isLinesCrossed(squirrelRunning, 10, false)) {
+                Timeline timeline = new Timeline();
+                timeline.setCycleCount(Math.abs(9));
 
-                    KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event -> {
-                        squirrelRunning.setLayoutX(squirrelRunning.getLayoutX() + 1);
+                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005),
+                        event -> squirrelRunning.setLayoutX(squirrelRunning.getLayoutX() + 1));
+                timeline.getKeyFrames().add(keyFrame);
+                timeline.play();
+            } else {
+                for (int i = 9; i >= 1; i--) {
+                    if (!isLinesCrossed(squirrelRunning, i, false)) {
+                        Timeline timeline = new Timeline();
+                        timeline.setCycleCount(Math.abs(i - 1));
 
-
-                    });
-                    timeline.getKeyFrames().add(keyFrame);
-                    timeline.play();
-                    squirrelSteps.add(new Step(9, 0));
-                    setHaunterSteps(new Step(9, 0));
-                } else {
-                    for (int i = 9; i >= 1; i--) {
-                        if (!isLinesCrossed(squirrelRunning, i, false)) {
-                            Timeline timeline = new Timeline();
-                            timeline.setCycleCount(Math.abs(i - 1));
-
-                            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event -> {
-                                squirrelRunning.setLayoutX(squirrelRunning.getLayoutX() + 1);
-
-
-                            });
-                            timeline.getKeyFrames().add(keyFrame);
-                            timeline.play();
-                            squirrelSteps.add(new Step(i - 1, 0));
-                            setHaunterSteps(new Step(i - 1, 0));
-                            break;
-                        }
+                        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005),
+                                event -> squirrelRunning.setLayoutX(squirrelRunning.getLayoutX() + 1));
+                        timeline.getKeyFrames().add(keyFrame);
+                        timeline.play();
+                        break;
                     }
                 }
-                break;
-            default:
-                break; // Добавлено для обработки других клавиш
+            }
         }
     }
 }
