@@ -182,9 +182,13 @@ public class LevelSevenHopeController {
     private final int[][] table = new int[400][600];
 
 
+    /**
+     Main method that runs this page, starts animation and builds the logic of this level.
+     */
     @FXML
     void initialize() {
         Platform.runLater(() -> mainPane.requestFocus());
+        // Loading pictures of the squirrel, the ghost and the portal
         Image image = new Image(
                 "file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/copy.png");
         squirrelRunning.setImage(image);
@@ -197,6 +201,7 @@ public class LevelSevenHopeController {
                 "file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/XDZT.gif");
         portal.setImage(image2);
 
+        // Filling the table with obstacles, each cell is a pixel
         fillTable();
 
         Timeline timeline = new Timeline();
@@ -204,13 +209,12 @@ public class LevelSevenHopeController {
         time = 0;
 
 
+        // Starting an animation of the haunter(ghost)
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.0175), event -> {
             upgradeTime(0.0175);
-            System.out.println("I am working!");
-            System.out.println("Start Y: " + line13.getStartY());
+            // if the haunter reached the player stop the game and show the loser page
             if (haunterRunning.getBoundsInParent().intersects(squirrelRunning.getBoundsInParent())) {
                 timeline.stop();
-                System.out.println("You win!");
                 squirrelRunning.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/com/example/javafxhope/hope-lose.fxml"));
@@ -225,6 +229,7 @@ public class LevelSevenHopeController {
                 stage.setScene(new Scene(root));
                 stage.show();
             }
+            // if the player reached the portal stop the game and show the winner page
             if (squirrelRunning.getBoundsInParent().intersects(portal.getBoundsInParent())) {
                 timeline.stop();
                 System.out.println("You win!");
@@ -244,8 +249,8 @@ public class LevelSevenHopeController {
             }
 
 
+            // Looking for the first step for the haunter to reach the player
             if (haunterRunning.getLayoutY() + SIZE < 400) {
-                System.out.println("I am working STILL!");
                 AlgorithmLi algorithm = new AlgorithmLi();
                 int moveX = 0;
                 int moveY = 0;
@@ -262,15 +267,16 @@ public class LevelSevenHopeController {
                     }
                 }
 
+                // Moving haunter closer to the player
                 haunterRunning.setLayoutX(moveX);
                 haunterRunning.setLayoutY(moveY);
 
 
             }
             else {
+                // While haunter is not on the stage, just move it up
                 haunterRunning.setLayoutY(haunterRunning.getLayoutY() - 1);
             }
-
         });
 
         timeline.getKeyFrames().add(keyFrame);
@@ -279,13 +285,10 @@ public class LevelSevenHopeController {
     }
 
 
-
-
-
-
-
-
-
+    /**
+     This method collects all obstacles lines to the same list.
+     @return list of lines
+     */
     private ArrayList<Line> lines() {
         ArrayList<Line> lines = new ArrayList<>();
         lines.add(line1);
@@ -336,57 +339,20 @@ public class LevelSevenHopeController {
     }
 
 
+    /**
+     This method builds the table of obstacles
+     */
     public void fillTable() {
         for (int i = 0; i < 400; i++) {
             for (int j = 0; j < 600; j++) {
                 Line line = new Line(j, i, j, i);
-                if (line.getBoundsInParent().intersects(line1.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line2.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line3.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line4.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line5.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line6.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line7.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line8.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line9.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line10.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line11.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line12.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line13.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line14.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line15.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line16.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line17.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line18.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line19.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line20.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line21.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line22.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line23.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line24.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line25.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line26.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line27.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line28.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line29.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line30.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line31.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line32.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line33.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line34.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line35.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line36.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line37.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line38.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line39.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line40.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line41.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line42.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line43.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line44.getBoundsInParent())) {
-                    table[i][j] = 1;
+                for (Line line1: lines()) {
+                    if (line.getBoundsInParent().intersects(line1.getBoundsInParent())) {
+                        table[i][j] = 1;
+                        break;
+                    }
                 }
-                else table[i][j] = 0;
+                if (table[i][j] != 1) table[i][j] = 0;
             }
         }
         for (int i = 0; i < 400; i++) {
@@ -398,6 +364,13 @@ public class LevelSevenHopeController {
     }
 
 
+    /**
+     Checks if player cross any line if he does certain step to needed direction
+     * @param circle player
+     * @param step amount of pixels
+     * @param isY vertical ot horizontal (if vertical - true, if horizontal - false)
+     * @return
+     */
     public boolean isLinesCrossed(ImageView circle, int step, boolean isY) {
         ImageView checkCircle;
         if (isY) {
@@ -421,30 +394,37 @@ public class LevelSevenHopeController {
         return false;
     }
 
+    /**
+     Handles a button press.
+     @param keyEvent certain button
+     */
     public void handleKeyPress(KeyEvent keyEvent) {
-        System.out.println("Key Pressed: " + keyEvent.getCode()); // Печатаем нажатую клавишу
+        System.out.println("Key Pressed: " + keyEvent.getCode());
         if (keyEvent.getCode() == UP) {
+            // Turn squirrel to the needed direction
             if (squirrelRunning.getScaleX() == 1) {
                 squirrelRunning.setRotate(270);
             } else {
                 squirrelRunning.setRotate(90);
             }
+            // if line is not crossed, make ten pixels step
             if (!isLinesCrossed(squirrelRunning, -10, true)) {
 
                 Timeline timeline = new Timeline();
                 timeline.setCycleCount(9);
-
+                // smooth animation
                 KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event ->
                         squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() - 1));
 
                 timeline.getKeyFrames().add(keyFrame);
                 timeline.play();
-            } else {
+            } // if player cross line in 10 pixel, do the biggest step without crossing the line
+            else {
                 for (int i = -9; i <= -1; i++) {
                     if (!isLinesCrossed(squirrelRunning, i, true)) {
                         Timeline timeline = new Timeline();
                         timeline.setCycleCount(Math.abs(i + 1));
-
+                        // smooth animation
                         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005),
                                 event -> squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() - 1));
                         timeline.getKeyFrames().add(keyFrame);
@@ -454,6 +434,7 @@ public class LevelSevenHopeController {
                 }
             }
         }
+        // for step down
         if (keyEvent.getCode() == DOWN) {
             if (squirrelRunning.getScaleX() == 1) {
                 squirrelRunning.setRotate(90);
@@ -484,6 +465,7 @@ public class LevelSevenHopeController {
                 }
             }
         }
+        // for step left
         if (keyEvent.getCode() == LEFT) {
             squirrelRunning.setRotate(0);
             squirrelRunning.setScaleX(-1);
@@ -511,6 +493,7 @@ public class LevelSevenHopeController {
                 }
             }
         }
+        // for step right
         if (keyEvent.getCode() == RIGHT) {
             squirrelRunning.setScaleX(1);
             squirrelRunning.setRotate(0);
@@ -539,3 +522,4 @@ public class LevelSevenHopeController {
         }
     }
 }
+

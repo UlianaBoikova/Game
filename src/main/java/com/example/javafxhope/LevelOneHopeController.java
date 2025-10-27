@@ -79,15 +79,20 @@ public class LevelOneHopeController {
     private ImageView squirrelRunning;
 
     private final int[][] table = new int[400][600];
+    private final static int SIZE = 40;
 
     public void upgradeTime(double interval) {
         time += interval;
     }
 
 
+    /**
+     Main method that runs this page, starts animation and builds the logic of this level.
+     */
     @FXML
     void initialize() {
         Platform.runLater(() -> mainPane.requestFocus());
+        // Loading pictures of the squirrel, the ghost and the portal
         Image image = new Image(
                 "file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/copy.png");
         squirrelRunning.setImage(image);
@@ -100,6 +105,7 @@ public class LevelOneHopeController {
                 "file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/XDZT.gif");
         portal.setImage(image2);
 
+        // Filling the table with obstacles, each cell is a pixel
         fillTable();
 
         Timeline timeline = new Timeline();
@@ -107,13 +113,12 @@ public class LevelOneHopeController {
         time = 0;
 
 
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.04), event -> {
-            upgradeTime(0.04);
-            System.out.println("I am working!");
-            System.out.println("Start Y: " + line13.getStartY());
+        // Starting an animation of the haunter(ghost)
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.0175), event -> {
+            upgradeTime(0.0175);
+            // if the haunter reached the player stop the game and show the loser page
             if (haunterRunning.getBoundsInParent().intersects(squirrelRunning.getBoundsInParent())) {
                 timeline.stop();
-                System.out.println("You win!");
                 squirrelRunning.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/com/example/javafxhope/hope-lose.fxml"));
@@ -128,6 +133,7 @@ public class LevelOneHopeController {
                 stage.setScene(new Scene(root));
                 stage.show();
             }
+            // if the player reached the portal stop the game and show the winner page
             if (squirrelRunning.getBoundsInParent().intersects(portal.getBoundsInParent())) {
                 timeline.stop();
                 System.out.println("You win!");
@@ -146,15 +152,17 @@ public class LevelOneHopeController {
                 stage.show();
             }
 
-            if (haunterRunning.getLayoutY() + 40 < 400) {
+
+            // Looking for the first step for the haunter to reach the player
+            if (haunterRunning.getLayoutY() + SIZE < 400) {
                 AlgorithmLi algorithm = new AlgorithmLi();
                 int moveX = 0;
                 int moveY = 0;
                 cycle:
-                for (int k = (int) squirrelRunning.getLayoutY(); k < squirrelRunning.getLayoutY() + 40; k++) {
-                    for (int l = (int) squirrelRunning.getLayoutX(); l < squirrelRunning.getLayoutX() + 40; l++) {
+                for (int k = (int) squirrelRunning.getLayoutY(); k < squirrelRunning.getLayoutY() + SIZE; k++) {
+                    for (int l = (int) squirrelRunning.getLayoutX(); l < squirrelRunning.getLayoutX() + SIZE; l++) {
                         List<int[]> path1 = algorithm.find(table, new int[]{(int) haunterRunning.getLayoutY(),
-                                (int)haunterRunning.getLayoutX()}, new int[]{k, l}, 40, 40);
+                                (int)haunterRunning.getLayoutX()}, new int[]{k, l}, SIZE, SIZE);
                         if (path1 != null && path1.size() >= 2) {
                             moveX = path1.get(1)[1];
                             moveY = path1.get(1)[0];
@@ -163,11 +171,14 @@ public class LevelOneHopeController {
                     }
                 }
 
+                // Moving haunter closer to the player
                 haunterRunning.setLayoutX(moveX);
                 haunterRunning.setLayoutY(moveY);
 
+
             }
             else {
+                // While haunter is not on the stage, just move it up
                 haunterRunning.setLayoutY(haunterRunning.getLayoutY() - 1);
             }
         });
@@ -177,6 +188,11 @@ public class LevelOneHopeController {
         System.out.println();
     }
 
+
+    /**
+     This method collects all obstacles lines to the same list.
+     @return list of lines
+     */
     private ArrayList<Line> lines() {
         ArrayList<Line> lines = new ArrayList<>();
         lines.add(line1);
@@ -196,26 +212,20 @@ public class LevelOneHopeController {
     }
 
 
+    /**
+     This method builds the table of obstacles
+     */
     public void fillTable() {
         for (int i = 0; i < 400; i++) {
             for (int j = 0; j < 600; j++) {
                 Line line = new Line(j, i, j, i);
-                if (line.getBoundsInParent().intersects(line1.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line2.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line3.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line4.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line5.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line6.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line7.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line8.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line9.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line10.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line11.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line12.getBoundsInParent()) ||
-                        line.getBoundsInParent().intersects(line13.getBoundsInParent())) {
-                    table[i][j] = 1;
+                for (Line line1: lines()) {
+                    if (line.getBoundsInParent().intersects(line1.getBoundsInParent())) {
+                        table[i][j] = 1;
+                        break;
+                    }
                 }
-                else table[i][j] = 0;
+                if (table[i][j] != 1) table[i][j] = 0;
             }
         }
         for (int i = 0; i < 400; i++) {
@@ -227,21 +237,27 @@ public class LevelOneHopeController {
     }
 
 
-
+    /**
+     Checks if player cross any line if he does certain step to needed direction
+     * @param circle player
+     * @param step amount of pixels
+     * @param isY vertical ot horizontal (if vertical - true, if horizontal - false)
+     * @return
+     */
     public boolean isLinesCrossed(ImageView circle, int step, boolean isY) {
         ImageView checkCircle;
         if (isY) {
             checkCircle = new ImageView();
             checkCircle.setLayoutX(circle.getLayoutX());
             checkCircle.setLayoutY(circle.getLayoutY() + step);
-            checkCircle.setFitWidth(40.0);
-            checkCircle.setFitHeight(40.0);
+            checkCircle.setFitWidth(SIZE);
+            checkCircle.setFitHeight(SIZE);
         } else {
             checkCircle = new ImageView();
             checkCircle.setLayoutX(circle.getLayoutX() + step);
             checkCircle.setLayoutY(circle.getLayoutY());
-            checkCircle.setFitWidth(40.0);
-            checkCircle.setFitHeight(40.0);
+            checkCircle.setFitWidth(SIZE);
+            checkCircle.setFitHeight(SIZE);
         }
         for (Line line: lines()) {
             if (checkCircle.getBoundsInParent().intersects(line.getBoundsInParent())) {
@@ -251,30 +267,37 @@ public class LevelOneHopeController {
         return false;
     }
 
+    /**
+     Handles a button press.
+     @param keyEvent certain button
+     */
     public void handleKeyPress(KeyEvent keyEvent) {
-        System.out.println("Key Pressed: " + keyEvent.getCode()); // Печатаем нажатую клавишу
+        System.out.println("Key Pressed: " + keyEvent.getCode());
         if (keyEvent.getCode() == UP) {
+            // Turn squirrel to the needed direction
             if (squirrelRunning.getScaleX() == 1) {
                 squirrelRunning.setRotate(270);
             } else {
                 squirrelRunning.setRotate(90);
             }
+            // if line is not crossed, make ten pixels step
             if (!isLinesCrossed(squirrelRunning, -10, true)) {
 
                 Timeline timeline = new Timeline();
                 timeline.setCycleCount(9);
-
+                // smooth animation
                 KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005), event ->
                         squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() - 1));
 
                 timeline.getKeyFrames().add(keyFrame);
                 timeline.play();
-            } else {
+            } // if player cross line in 10 pixel, do the biggest step without crossing the line
+            else {
                 for (int i = -9; i <= -1; i++) {
                     if (!isLinesCrossed(squirrelRunning, i, true)) {
                         Timeline timeline = new Timeline();
                         timeline.setCycleCount(Math.abs(i + 1));
-
+                        // smooth animation
                         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.005),
                                 event -> squirrelRunning.setLayoutY(squirrelRunning.getLayoutY() - 1));
                         timeline.getKeyFrames().add(keyFrame);
@@ -284,6 +307,7 @@ public class LevelOneHopeController {
                 }
             }
         }
+        // for step down
         if (keyEvent.getCode() == DOWN) {
             if (squirrelRunning.getScaleX() == 1) {
                 squirrelRunning.setRotate(90);
@@ -314,6 +338,7 @@ public class LevelOneHopeController {
                 }
             }
         }
+        // for step left
         if (keyEvent.getCode() == LEFT) {
             squirrelRunning.setRotate(0);
             squirrelRunning.setScaleX(-1);
@@ -341,6 +366,7 @@ public class LevelOneHopeController {
                 }
             }
         }
+        // for step right
         if (keyEvent.getCode() == RIGHT) {
             squirrelRunning.setScaleX(1);
             squirrelRunning.setRotate(0);
@@ -369,6 +395,7 @@ public class LevelOneHopeController {
         }
     }
 }
+
 
 
 

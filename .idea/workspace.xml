@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="JavaFXHope:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69788fcc-2ce6-4bda-bcd4-e40ef6176be7" name="Changes" comment="Maze Game">
+    <list default="true" id="69788fcc-2ce6-4bda-bcd4-e40ef6176be7" name="Changes" comment="Updated code + cleaner">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JavaFXHope_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/AlgorithmLi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/AlgorithmLi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/HopeLoseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/HopeLoseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/HopeWinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/HopeWinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/Just Check" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/Just Check" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/Just Check" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelEightHopeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelEightHopeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelFiveHopeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelFiveHopeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelFourHopeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelFourHopeController.java" afterDir="false" />
@@ -20,7 +27,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelSixHopeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelSixHopeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelThreeHopeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelThreeHopeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelTwoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/LevelTwoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/javafxhope/last-hope.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/javafxhope/last-hope.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafxhope/Step.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +37,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -60,6 +67,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/SquirrelGame.app/Contents/app" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/javafxhope/assets" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/javafxhope" />
     </key>
@@ -67,9 +76,22 @@
       <recent name="com.example.javafxhope" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.AlgorithmLi">
     <configuration name="AlgorithmLi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.javafxhope.AlgorithmLi" />
+      <module name="JavaFXHope" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.javafxhope.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Store" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.javafxhope.Store" />
       <module name="JavaFXHope" />
       <extension name="coverage">
         <pattern>
@@ -84,6 +106,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AlgorithmLi" />
+        <item itemvalue="Application.Store" />
       </list>
     </recent_temporary>
   </component>
@@ -112,12 +135,21 @@
       <option name="project" value="LOCAL" />
       <updated>1736078593894</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated code + cleaner">
+      <option name="closed" value="true" />
+      <created>1736245031818</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1736245031818</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Maze Game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Maze Game" />
+    <MESSAGE value="Updated code + cleaner" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated code + cleaner" />
   </component>
 </project>

@@ -10,6 +10,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ This class is controller for the loose page of the game.
+ */
 public class HopeLoseController {
 
     @FXML
@@ -21,12 +24,17 @@ public class HopeLoseController {
     @FXML
     private ImageView losePicture;
 
+    /**
+     Main method that runs this page.
+     */
     @FXML
     void initialize() {
 
+        // Showing loser animation
         Image image = new Image("file:///Users/ulianaboikova/IdeaProjects/JavaFXHope/src/main/java/com/example/javafxhope/assets/Lose.gif");
         losePicture.setImage(image);
 
+        // Processing the click on the menu button
         menuButton.setOnAction(event -> {
             menuButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
@@ -42,7 +50,9 @@ public class HopeLoseController {
             stage.setScene(new Scene(root));
             stage.show();
         });
+        // Processing the click on the start over button
         startOverButton.setOnAction(event -> {
+            // Checking which level player just did, and loading it
             startOverButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             if (HelloController.getLevelNumber() == 1) {
